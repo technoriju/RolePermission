@@ -7,20 +7,44 @@
           <div class="badge badge-danger">new</div>
         </a>
       </li>
+      {{-- Role Permission --}}
       <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-          <i class="typcn typcn-document-text menu-icon"></i>
-          <span class="menu-title">UI Elements</span>
+          <i class="typcn typcn-film menu-icon"></i>
+          <span class="menu-title">Role Permission</span>
           <i class="menu-arrow"></i>
         </a>
         <div class="collapse" id="ui-basic">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/buttons.html">Buttons</a></li>
-            <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/dropdowns.html">Dropdowns</a></li>
-            <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/typography.html">Typography</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route('role.index')}}">Role</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{url('/manage/template/chats')}}">Permission</a></li>
           </ul>
         </div>
       </li>
+      {{-- End Role Permission --}}
+
+      {{-- Template UI --}}
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+          <i class="typcn typcn-document-text menu-icon"></i>
+          <span class="menu-title">Template UI</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="ui-basic">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" href="{{url('/manage/template/default')}}">Dashboard</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{url('/manage/template/charts')}}">Charts</a></li>
+            {{-- <li class="nav-item"> <a class="nav-link" href="{{url('/manage/template/documentation')}}">Documentation</a></li> --}}
+            <li class="nav-item"> <a class="nav-link" href="{{url('/manage/template/form')}}">Form</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{url('/manage/template/icon')}}">Icon</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{url('/manage/template/table')}}">Table</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{url('/manage/template/button')}}">Button</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{url('/manage/template/dropdown')}}">Dropdown</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{url('/manage/template/typography')}}">Typography</a></li>
+          </ul>
+        </div>
+      </li>
+      {{-- End Template UI --}}
       <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
           <i class="typcn typcn-film menu-icon"></i>
@@ -77,7 +101,7 @@
         </a>
         <div class="collapse" id="auth">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="../../pages/samples/login.html"> Login </a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{url('/manage/template/dashbord')}}"> Login </a></li>
             <li class="nav-item"> <a class="nav-link" href="../../pages/samples/register.html"> Register </a></li>
           </ul>
         </div>

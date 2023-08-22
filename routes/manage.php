@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\RegisterController;
+use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\TemplateUiController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,8 +27,23 @@ Route::group(['middleware'=>'guest'], function(){
 Route::group(['middleware'=>'auth'], function(){
     Route::get('/dashboard',[DashboardController::class,'index'])->name('manage.dashboard');
     Route::get('/form',[DashboardController::class,'form'])->name('manage.form');
-    Route::get('/table',[DashboardController::class,'table'])->name('manage.table');
+
+    Route::resource('role', RoleController::class);
 
     Route::get('/logout',[LoginController::class,'destroy'])->name('manage.destroy');
+});
+
+
+
+Route::group(['prefix'=>'/template'], function(){
+    Route::get('/default',[TemplateUiController::class,'dashboard']);
+    Route::get('/charts',[TemplateUiController::class,'charts']);
+    Route::get('/documentation',[TemplateUiController::class,'documentation']);
+    Route::get('/form',[TemplateUiController::class,'form']);
+    Route::get('/icon',[TemplateUiController::class,'icon']);
+    Route::get('/table',[TemplateUiController::class,'table']);
+    Route::get('/button',[TemplateUiController::class,'button']);
+    Route::get('/dropdown',[TemplateUiController::class,'dropdown']);
+    Route::get('/typography',[TemplateUiController::class,'typography']);
 });
 

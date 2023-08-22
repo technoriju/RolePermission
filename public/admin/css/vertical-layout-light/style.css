@@ -25935,6 +25935,16 @@ div.tagsinput span.tag a {
   left: 30px;
 }
 
+.custom-table-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.custom-table-header a {
+    padding: 10px 10px;
+}
+
 @media (max-width: 991px) {
   #settings-trigger {
     display: none;
