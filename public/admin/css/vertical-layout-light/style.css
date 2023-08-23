@@ -25945,6 +25945,10 @@ div.tagsinput span.tag a {
     padding: 10px 10px;
 }
 
+#toast-container.nopacity > div {
+    opacity: 1;
+}
+
 @media (max-width: 991px) {
   #settings-trigger {
     display: none;

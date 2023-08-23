@@ -39,7 +39,7 @@
               @if($errors->any())
                 <div class="alert alert-danger">{{$errors->first()}}</div>
               @endif
-              <form class="pt-3" action="{{route('manage.login')}}" method="post">
+              <form class="pt-3" action="{{route('manage.loginForm')}}" method="post">
                 @csrf
                 <div class="form-group">
                   <input type="email" name="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Username" value="{{old('email')}}">

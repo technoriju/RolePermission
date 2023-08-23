@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\{Role,Permission};
+use DB;
 
 class RoleController extends Controller
 {
@@ -36,10 +36,19 @@ class RoleController extends Controller
             'name' => 'required|string|unique:roles,name'
         ]);
 
-        $role = Role::create(['name'=>$request->name,'guard_name'=>'web']);
-        $role->syncPermissions($request->permission);
+        DB::beginTransaction();
+        try {
 
-        return redirect()->back()->with('success','Role created!');
+            $role = Role::create(['name'=>$request->name,'guard_name'=>'web']);
+            $role->syncPermissions($request->permission);
+            DB::commit();
+            return redirect()->back()->with('success','Role created!');
+
+        } catch(\Exception $e) {
+
+            DB::rollback();
+            return redirect()->back()->with('error','Something went wrong! Please try again later');
+        }
     }
 
     /**
@@ -64,24 +73,46 @@ class RoleController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Role $role)
+    public function update(Request $request,$id)
     {
         $request->validate([
-            'name' => "required|string|unique:roles,name,$role->id"
+            'name' => "required|string|unique:roles,name,$id"
         ]);
 
-        $role->update(['name' => $request->name]);
-        $role->syncPermissions($request->permission);
+        DB::beginTransaction();
+        try {
 
-        return redirect()->back()->with('success','Role Updated!');
+            $role = Role::find($id);
+            $role->update(['name' => $request->name]);
+            $role->syncPermissions($request->permission);
+            DB::commit();
+            return redirect()->back()->with('success','Role Updated!');
+
+        } catch(\Exception $e) {
+
+            DB::rollback();
+            return redirect()->back()->with('error','Role Updated Fail!');
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Role $role)
+    public function destroy($id)
     {
-        $role->delete();
-        return redirect()->back()->with('success','Role has been deleted successfully');
+        DB::beginTransaction();
+        try {
+
+            $role = Role::find($id);
+            $role->delete();
+            DB::commit();
+            return redirect()->back()->with('success','Role has been deleted successfully');
+
+        } catch(\Exception $e) {
+
+            DB::rollback();
+            return redirect()->back()->with('error','Role Deleted Fail!');
+        }
+
     }
 }

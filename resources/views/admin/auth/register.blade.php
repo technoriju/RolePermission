@@ -33,7 +33,7 @@
               @if($errors->any())
                  <div class="alert alert-danger" role="alert"> {{$errors->first()}}</div>
               @endif
-              <form class="pt-3" action="{{route('manage.register')}}" method="post">
+              <form class="pt-3" action="{{route('manage.registerForm')}}" method="post">
                 @csrf
                 <div class="form-group">
                   <input type="text" name="name" class="form-control form-control-lg" id="exampleInputUsername1" placeholder="Name" value="{{old('name')}}">

@@ -28,12 +28,6 @@
                             <p class="card-description">
                                 Mark appropriate Permission
                             </p>
-                            @if($errors->any())
-                                <div class="alert alert-danger">{{$errors->first()}}</div>
-                            @endif
-                            @if(session('success') != null)
-                                <div class="alert alert-success">{{session('success')}}</div>
-                            @endif
                             <form class="forms-sample" action="{{route('role.update',$role->id)}}" method="post">
                                 @csrf
                                 @method('PUT')

@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\RegisterController;
 use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\TemplateUiController;
 /*
 |--------------------------------------------------------------------------
@@ -17,22 +18,22 @@ use App\Http\Controllers\Admin\TemplateUiController;
 |
 */
 Route::group(['middleware'=>'guest'], function(){
+
     Route::get('/register',[RegisterController::class,'index'])->name('manage.register');
-    Route::post('/register',[RegisterController::class,'store'])->name('manage.register');
+    Route::post('/register',[RegisterController::class,'store'])->name('manage.registerForm');
 
     Route::get('/',[LoginController::class,'index'])->name('manage.login');
-    Route::post('/',[LoginController::class,'login'])->name('manage.login')->middleware('throttle:6,1');
+    Route::post('/',[LoginController::class,'login'])->name('manage.loginForm')->middleware('throttle:6,1');
 });
 
 Route::group(['middleware'=>'auth'], function(){
-    Route::get('/dashboard',[DashboardController::class,'index'])->name('manage.dashboard');
-    Route::get('/form',[DashboardController::class,'form'])->name('manage.form');
 
+    Route::get('/dashboard',[DashboardController::class,'index'])->name('manage.dashboard');
     Route::resource('role', RoleController::class);
+    Route::resource('user', UserController::class);
 
     Route::get('/logout',[LoginController::class,'destroy'])->name('manage.destroy');
 });
-
 
 
 Route::group(['prefix'=>'/template'], function(){

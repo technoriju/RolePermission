@@ -13,9 +13,6 @@
                                     Add Role
                                 </a>
                             </div>
-                            @if(session('success') != null)
-                             <div class="alert alert-success">{{session('success')}}</div>
-                            @endif
                             <div class="table-responsive pt-3">
                                 <table class="table table-striped project-orders-table">
                                     <thead>
@@ -50,7 +47,7 @@
                                                     <form action="{{route('role.destroy',$val->id)}}" method="post">
                                                        @csrf
                                                        @method('DELETE')
-                                                       <button class="btn btn-danger btn-sm btn-icon-text">Delete
+                                                       <button class="btn btn-danger btn-sm btn-icon-text" onclick="return confirm('Are you sure?')">Delete
                                                         <i class="typcn typcn-delete-outline btn-icon-append"></i>
                                                        </button>
                                                     </form>

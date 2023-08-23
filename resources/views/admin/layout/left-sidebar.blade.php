@@ -9,19 +9,32 @@
       </li>
       {{-- Role Permission --}}
       <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+        <a class="nav-link" data-toggle="collapse" href="#ui-role" aria-expanded="false" aria-controls="ui-role">
           <i class="typcn typcn-film menu-icon"></i>
           <span class="menu-title">Role Permission</span>
           <i class="menu-arrow"></i>
         </a>
-        <div class="collapse" id="ui-basic">
+        <div class="collapse" id="ui-role">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item"> <a class="nav-link" href="{{route('role.index')}}">Role</a></li>
-            <li class="nav-item"> <a class="nav-link" href="{{url('/manage/template/chats')}}">Permission</a></li>
+            <li class="nav-item"> <a class="nav-link" href="#">Permission</a></li>
           </ul>
         </div>
       </li>
       {{-- End Role Permission --}}
+
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
+          <i class="typcn typcn-film menu-icon"></i>
+          <span class="menu-title">User Section</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="form-elements">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"><a class="nav-link" href="{{route('user.index')}}">User Data</a></li>
+          </ul>
+        </div>
+      </li>
 
       {{-- Template UI --}}
       <li class="nav-item">
@@ -45,18 +58,7 @@
         </div>
       </li>
       {{-- End Template UI --}}
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
-          <i class="typcn typcn-film menu-icon"></i>
-          <span class="menu-title">Form elements</span>
-          <i class="menu-arrow"></i>
-        </a>
-        <div class="collapse" id="form-elements">
-          <ul class="nav flex-column sub-menu">
-            <li class="nav-item"><a class="nav-link" href="../../pages/forms/basic_elements.html">Basic Elements</a></li>
-          </ul>
-        </div>
-      </li>
+
       <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
           <i class="typcn typcn-chart-pie-outline menu-icon"></i>
