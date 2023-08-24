@@ -23,7 +23,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        $permission = Permission::all();
+        $permission = Permission::limit(4)->get();
         return view('admin.role.create',compact('permission'));
     }
 

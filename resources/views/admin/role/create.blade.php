@@ -8,6 +8,10 @@
        .form-check {
              margin-right: 12px;
        }
+       .permission-margin{
+             margin: 0px 76px;
+       }
+
   </style>
 @endpush
 @section('main')
@@ -37,7 +41,13 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputUsername1">Choose Permission</label>
-                                    <div class="row">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input name="permission[]" type="checkbox" class="form-check-input" value=""">
+                                            Admin
+                                        </label>
+                                    </div>
+                                    <div class="row permission-margin">
                                         @if(isset($permission) && count($permission)>0)
                                         @foreach ($permission as $val)
                                         <div class="form-check">
@@ -51,6 +61,7 @@
                                           No permission data available
                                         @endif
                                     </div>
+                                    <hr class="hr" />
                                 </div>
                                 <button type="submit" class="btn btn-primary mr-2">Submit</button>
                             </form>
